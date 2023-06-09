@@ -1,0 +1,5 @@
+include *.py
+include *.json
+include LICENSE
+recursive-include zohosdk *
+recursive-exclude zohosdk *.pyc
