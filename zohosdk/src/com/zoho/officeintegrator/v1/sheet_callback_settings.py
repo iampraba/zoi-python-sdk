@@ -12,8 +12,8 @@ class SheetCallbackSettings(object):
 
 		self.__save_format = None
 		self.__save_url = None
-		self.__savetype = None
 		self.__save_url_params = None
+		self.__save_url_headers = None
 		self.__key_modified = dict()
 
 	def get_save_format(self):
@@ -64,30 +64,6 @@ class SheetCallbackSettings(object):
 		self.__save_url = save_url
 		self.__key_modified['save_url'] = 1
 
-	def get_savetype(self):
-		"""
-		The method to get the savetype
-
-		Returns:
-			string: A string representing the savetype
-		"""
-
-		return self.__savetype
-
-	def set_savetype(self, savetype):
-		"""
-		The method to set the value to savetype
-
-		Parameters:
-			savetype (string) : A string representing the savetype
-		"""
-
-		if savetype is not None and not isinstance(savetype, str):
-			raise SDKException(Constants.DATA_TYPE_ERROR, 'KEY: savetype EXPECTED TYPE: str', None, None)
-		
-		self.__savetype = savetype
-		self.__key_modified['savetype'] = 1
-
 	def get_save_url_params(self):
 		"""
 		The method to get the save_url_params
@@ -111,6 +87,30 @@ class SheetCallbackSettings(object):
 		
 		self.__save_url_params = save_url_params
 		self.__key_modified['save_url_params'] = 1
+
+	def get_save_url_headers(self):
+		"""
+		The method to get the save_url_headers
+
+		Returns:
+			dict: An instance of dict
+		"""
+
+		return self.__save_url_headers
+
+	def set_save_url_headers(self, save_url_headers):
+		"""
+		The method to set the value to save_url_headers
+
+		Parameters:
+			save_url_headers (dict) : An instance of dict
+		"""
+
+		if save_url_headers is not None and not isinstance(save_url_headers, dict):
+			raise SDKException(Constants.DATA_TYPE_ERROR, 'KEY: save_url_headers EXPECTED TYPE: dict', None, None)
+		
+		self.__save_url_headers = save_url_headers
+		self.__key_modified['save_url_headers'] = 1
 
 	def is_key_modified(self, key):
 		"""

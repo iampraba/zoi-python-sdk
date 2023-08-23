@@ -72,7 +72,7 @@ class CreatePresentationParameters(object):
 		The method to get the callback_settings
 
 		Returns:
-			ShowCallbackSettings: An instance of ShowCallbackSettings
+			CallbackSettings: An instance of CallbackSettings
 		"""
 
 		return self.__callback_settings
@@ -82,16 +82,16 @@ class CreatePresentationParameters(object):
 		The method to set the value to callback_settings
 
 		Parameters:
-			callback_settings (ShowCallbackSettings) : An instance of ShowCallbackSettings
+			callback_settings (CallbackSettings) : An instance of CallbackSettings
 		"""
 
 		try:
-			from zohosdk.src.com.zoho.officeintegrator.v1.show_callback_settings import ShowCallbackSettings
+			from zohosdk.src.com.zoho.officeintegrator.v1.callback_settings import CallbackSettings
 		except Exception:
-			from .show_callback_settings import ShowCallbackSettings
+			from .callback_settings import CallbackSettings
 
-		if callback_settings is not None and not isinstance(callback_settings, ShowCallbackSettings):
-			raise SDKException(Constants.DATA_TYPE_ERROR, 'KEY: callback_settings EXPECTED TYPE: ShowCallbackSettings', None, None)
+		if callback_settings is not None and not isinstance(callback_settings, CallbackSettings):
+			raise SDKException(Constants.DATA_TYPE_ERROR, 'KEY: callback_settings EXPECTED TYPE: CallbackSettings', None, None)
 		
 		self.__callback_settings = callback_settings
 		self.__key_modified['callback_settings'] = 1
