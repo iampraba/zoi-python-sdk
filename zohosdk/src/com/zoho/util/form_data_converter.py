@@ -60,7 +60,10 @@ class FormDataConverter(Converter):
             elif isinstance(key_value, StreamWrapper):
                 request_body.append((key_name, key_value.get_stream()))
             else:
-                request_body.append((key_name, (None, json.dumps(key_value))))
+                if isinstance(key_value, dict):
+                    request_body.append((key_name, (None, json.dumps(key_value))))
+                else:
+                    request_body.append((key_name, (None, key_value)))
 
     def add_file_body(self, request_object, request_body):
         for key_name, key_value in request_object.items():
@@ -320,6 +323,4 @@ class FormDataConverter(Converter):
 
     def construct_private_member(self, class_name, member_name):
         return '_' + class_name + '__' + member_name
-
-
 
